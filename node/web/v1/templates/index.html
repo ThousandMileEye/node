@@ -1,0 +1,92 @@
+<!doctype html>
+
+<html lang="ja">
+<head>
+	<!-- Bootstrap 3.3.7 -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body ng-app="ngApp">
+	<!-- Angularjs 1.5.0 -->
+        <script data-require="angular.js@1.2.11" data-semver="1.2.11" src="http://code.angularjs.org/1.2.11/angular.js"></script>
+	<!-- Angularjs UI Router -->
+        <script data-require="angular-ui-router@*" data-semver="0.2.7" src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+
+	<!-- Angularjs Bootstrap UI -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+
+	<!-- Application Bootstrap  -->
+	<script type="text/javascript">
+	/*
+	 * App インスタンスの取得
+	 * - ルーティング用モジュールの読み込み
+	 * - Angular Material 用モジュールの読み込み
+	 */
+	var app = angular.module('ngApp', ['ui.router', 'ui.bootstrap']);
+
+	/*
+	 * Angularjs Template Engine 用の特殊文字を設定
+	 */
+	app.config(function($interpolateProvider) {
+		$interpolateProvider.startSymbol('[[');
+		$interpolateProvider.endSymbol(']]');
+	});
+
+	/*
+	 * Shared Data Service
+	 */
+	app.service('SharedDataService', function () {
+		return shared_data = {
+			'label_type' : ''
+		};
+	});
+	</script>
+
+	<!-- Controllers -->
+	{% block controllers %}
+		{% include 'controllers/common.js' %}
+		{% include 'controllers/points.js' %}
+		{% include 'controllers/labels.js' %}
+		{% include 'controllers/label_types.js' %}
+	{% endblock %}
+
+	<script type="text/javascript">
+	/*
+	 * ルーティングの定義
+	 */
+	app.config(function($stateProvider, $urlRouterProvider) {
+		$urlRouterProvider.otherwise('points');
+		$stateProvider
+		.state('home', {
+			url		: '/home',
+			template	: '<h1>home<h1>'
+		})
+
+		.state('points', {
+			url		: '/points',
+			templateUrl	: '{{ request.static_url("web:v1/panels/points.html") }}',
+		})
+
+		.state('labels', {
+			url		: '/labels',
+			templateUrl	: '{{ request.static_url("web:v1/panels/labels.html") }}',
+		})
+
+		.state('label_types', {
+			url		: '/label_types',
+			templateUrl	: '{{ request.static_url("web:v1/panels/label_types.html") }}',
+		})
+	});
+	</script>
+
+	<!-- a -->
+	<a ui-sref="home">home</a>
+	<a ui-sref="points">points</a>
+	<a ui-sref="labels">labels</a>
+	<a ui-sref="label_types">label_types</a>
+
+	<!-- VIEW -->
+	<div ui-view></div>
+</body>
+</html>
+

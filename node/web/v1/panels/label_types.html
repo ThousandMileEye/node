@@ -1,0 +1,21 @@
+
+<div ng-controller="LabelTypesController" ng-init="gets()">
+	<input type="text" ng-model="name">
+	<button type="button" ng-click="add(name)">
+		登録
+	</button>
+
+	<table border="1" style="width:100%;">
+	<thead>
+		<tr>
+			<th>ラベル種別</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="label_type in label_types">
+			<td>[[ label_type.name ]]</td>
+		</tr>
+	</tbody>
+	</table>
+</div>
+

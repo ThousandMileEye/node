@@ -1,0 +1,19 @@
+#
+# Eye (ICMP, BACnet Driver)
+#
+#-e git+https://github.com/ThousandMileEye/eye.git#egg=eye-0.2.1
+
+waitress
+jsonschema
+
+pyramid
+pyramid-jinja2
+pyramid_simpleform
+
+alembic
+transaction
+pyramid_sqlalchemy
+
+apscheduler
+
+

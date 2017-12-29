@@ -1,0 +1,21 @@
+
+<div ng-controller="PointsController" ng-init="gets()">
+	<input type="text" ng-model="name">
+	<button type="button" ng-click="add(name)">
+		登録
+	</button>
+
+	<table border="1" style="width:100%;">
+	<thead>
+		<tr>
+			<th>ポイント名</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="point in points">
+			<td>[[ point.name ]]</td>
+		</tr>
+	</tbody>
+	</table>
+</div>
+

@@ -1,0 +1,22 @@
+
+<div ng-controller="LabelsController" ng-init="gets()">
+	<input type="text" autocomplete="off" ng-controller="LabelTypesController" ng-init="gets()" ng-model="shared_data.label_type" typeahead="type as type.name for type in label_types | filter : $viewValue" typeahead-editable="false" placeholder="Label Type">
+	<input type="text" ng-model="name" placeholder="Label Name">
+	<button type="button" ng-click="add(name, shared_data.label_type.id)">
+		登録
+	</button>
+
+	<table border="1" style="width:100%;">
+	<thead>
+		<tr>
+			<th>ラベル</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="label in labels">
+			<td>[[ label.name ]]</td>
+		</tr>
+	</tbody>
+	</table>
+</div>
+
