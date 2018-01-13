@@ -3,6 +3,7 @@
 from pyramid.view import view_config
 
 import monitoringPoints
+import units
 import labels
 import label_types
 
@@ -18,6 +19,7 @@ def bootstrap(config):
 	#config.scan('.controller')
 
 	config.include(monitoringPoints.bootstrap, route_prefix='/monitoringPoints/')
+	config.include(units.bootstrap, route_prefix='/units/')
 	config.include(labels.bootstrap, route_prefix='/labels/')
 	config.include(label_types.bootstrap, route_prefix='/label_types/')
 
