@@ -18,7 +18,7 @@ if __name__ == '__main__':
 		# Software Information
 		#
 		name		= 'node',
-		version		= '0.0.1',
+		version		= '0.0.2',
 
 		#
 		# Author Information
