@@ -62,6 +62,11 @@
 			template	: '<h1>home<h1>'
 		})
 
+		.state('configs', {
+			url		: '/configs',
+			templateUrl	: '{{ request.static_url("web:v1/panels/configs.html") }}',
+		})
+
 		.state('points', {
 			url		: '/points',
 			templateUrl	: '{{ request.static_url("web:v1/panels/points.html") }}',
@@ -81,6 +86,7 @@
 
 	<!-- a -->
 	<a ui-sref="home">home</a>
+	<a ui-sref="configs">configs</a>
 	<a ui-sref="points">points</a>
 	<a ui-sref="labels">labels</a>
 	<a ui-sref="label_types">label_types</a>

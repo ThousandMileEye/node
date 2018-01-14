@@ -17,15 +17,18 @@ class MonitoringConfiguration(BaseObject):
 	#
 	# カラム定義
 	#
-	id		= Column('ID', Integer, primary_key=True)	# 識別子
+	id		= Column('ID', String, primary_key=True)	# 識別子
 	config		= Column('CONFIG', String)			# 設定情報
-	interval	= Column('ID', Integer)				# 監視頻度
+	enable		= Column('ENABLE', BOOLEAN)			# 設定有効化
+	interval	= Column('INTERVAL', Integer)			# 監視頻度
 
 	#
 	# コンストラクタ
 	#
-	def __init__(self, config, interval = 60):
+	def __init__(self, config, enable = True, interval = 60):
+		self.id = str(uuid.uuid4())	# 識別子
 		self.config = config		# 監視設定情報
+		self.enable = enable		# 監視設定の有効化
 		self.interval = interval	# 監視頻度
 
 	#
@@ -41,6 +44,7 @@ class MonitoringConfiguration(BaseObject):
 		return {
 			'id'		: self.id,
 			'config'	: self.config,
+			'enable'	: self.enable,
 			'interval'	: self.interval,
 		}
 
