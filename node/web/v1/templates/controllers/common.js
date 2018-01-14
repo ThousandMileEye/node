@@ -2,6 +2,33 @@
 <script type='text/javascript'>
 app.constant('api', {
 	/*
+	 * 監視設定
+	 */
+	configs : {
+		/*
+		 * 追加
+		 */
+		add : function($http, name) {
+			return $http({
+				method	: 'POST',
+				url     : "{{ request.route_path('api::v1:monitoringPoints:rest') }}",
+				data	: {
+					'name' : name,
+				}
+			})
+		},
+
+		/*
+		 * 取得
+		 */
+		gets : function($http) {
+			return $http({
+				method  : "GET",
+				url     : "{{ request.route_path('api::v1:monitoringConfigurations:rest') }}",
+			})
+		},
+	},
+	/*
 	 * 監視ポイント
 	 */
 	points : {
@@ -28,6 +55,35 @@ app.constant('api', {
 			})
 		},
 	},
+
+	/*
+	 * 単位
+	 */
+	units : {
+		/*
+		 * 追加
+		 */
+		add : function($http, name) {
+			return $http({
+				method	: 'POST',
+				url     : "{{ request.route_path('api::v1:units:rest') }}",
+				data	: {
+					'name' : name,
+				}
+			})
+		},
+
+		/*
+		 * 取得
+		 */
+		gets : function($http) {
+			return $http({
+				method  : "GET",
+				url     : "{{ request.route_path('api::v1:units:rest') }}",
+			})
+		},
+	},
+
 	/*
 	 * ラベル
 	 */

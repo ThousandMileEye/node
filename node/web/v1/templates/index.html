@@ -45,7 +45,9 @@
 	<!-- Controllers -->
 	{% block controllers %}
 		{% include 'controllers/common.js' %}
+		{% include 'controllers/configs.js' %}
 		{% include 'controllers/points.js' %}
+		{% include 'controllers/units.js' %}
 		{% include 'controllers/labels.js' %}
 		{% include 'controllers/label_types.js' %}
 	{% endblock %}
@@ -72,6 +74,11 @@
 			templateUrl	: '{{ request.static_url("web:v1/panels/points.html") }}',
 		})
 
+		.state('units', {
+			url		: '/units',
+			templateUrl	: '{{ request.static_url("web:v1/panels/units.html") }}',
+		})
+
 		.state('labels', {
 			url		: '/labels',
 			templateUrl	: '{{ request.static_url("web:v1/panels/labels.html") }}',
@@ -85,11 +92,19 @@
 	</script>
 
 	<!-- a -->
+	|
 	<a ui-sref="home">home</a>
+	|
 	<a ui-sref="configs">configs</a>
+	|
 	<a ui-sref="points">points</a>
+	|
+	<a ui-sref="units">units</a>
+	|
 	<a ui-sref="labels">labels</a>
+	|
 	<a ui-sref="label_types">label_types</a>
+	|
 
 	<!-- VIEW -->
 	<div ui-view></div>
